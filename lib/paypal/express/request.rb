@@ -63,6 +63,15 @@ module Paypal
         Response.new response
       end
 
+      def void_authorization!(authorization_id)
+        params = {
+          :AUTHORIZATIONID => authorization_id,
+        }
+
+        response = self.request :DoVoid, params
+        Response.new response
+      end
+
       # Recurring Payment Specific
 
       def subscribe!(token, recurring_profile)
